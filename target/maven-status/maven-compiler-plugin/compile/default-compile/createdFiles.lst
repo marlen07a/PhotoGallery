@@ -1,0 +1,4 @@
+com/example/photogallery/controller/GalleryController.class
+com/example/photogallery/PhotoGalleryApplication.class
+com/example/photogallery/service/ImageService.class
+com/example/photogallery/model/Image.class

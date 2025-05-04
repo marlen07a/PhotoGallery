@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gallery - Photo Gallery</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div class="nav">
+    <a href="/">Home</a>
+    <a href="/gallery">Gallery</a>
+</div>
+
+<div class="gallery">
+    <form th:action="@{/gallery}" method="get">
+        <input type="text" name="search" id="searchInput" class="search" placeholder="Search images...">
+        <button type="submit">Search</button>
+    </form>
+
+    <div class="gallery-grid">
+        <div th:each="image : ${images}">
+            <img th:src="${image.url}" th:alt="${image.title}">
+        </div>
+    </div>
+
+    <div class="ai-section">
+        <h2>AI Generated Gallery</h2>
+        <form th:action="@{/ai/generate}" method="post">
+            <input type="text" name="prompt" id="aiPrompt" placeholder="Enter AI prompt">
+            <button type="submit">Generate</button>
+        </form>
+
+        <div class="gallery-grid">
+            <div th:each="aiImage : ${aiImages}">
+                <img th:src="${aiImage.url}" th:alt="${aiImage.prompt}">
+                <form th:action="@{/ai/like/{id}(id=${aiImage.id})}" method="post">
+                    <button type="submit">Like (<span th:text="${aiImage.likes}">0</span>)</button>
+                </form>
+                <div class="comment-section">
+                    <form th:action="@{/ai/comment/{id}(id=${aiImage.id})}" method="post">
+                        <input type="text" name="comment" placeholder="Add comment">
+                        <button type="submit">Comment</button>
+                    </form>
+                    <div th:each="comment : ${aiImage.comments}">
+                        <p th:text="${comment}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
