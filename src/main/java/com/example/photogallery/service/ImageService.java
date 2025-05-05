@@ -13,7 +13,6 @@ public class ImageService {
     private List<Image> aiImages = new ArrayList<>();
 
     public ImageService() {
-        // Mock initial images
         images.add(new Image(1L, "https://via.placeholder.com/200", "Nature", null));
         images.add(new Image(2L, "https://via.placeholder.com/201", "City", null));
     }
