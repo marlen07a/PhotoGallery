@@ -22,7 +22,7 @@
 
 ```bash
 git clone <repository-url>
-cd photo-gallery
+cd PhotoGallery
 ```
 
 2. Сборка проекта с помощью Maven:
